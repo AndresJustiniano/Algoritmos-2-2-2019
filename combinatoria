@@ -1,0 +1,95 @@
+#pragma once
+#include "Stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+class Combinatorio
+{
+private:
+	int n;
+	int r;
+public:
+	Combinatorio()
+	{
+		n = r = 0;
+	}
+
+	void setN(int N)
+	{
+		n = N;
+	}
+
+	void setR(int R)
+	{
+		r = R;
+	}
+
+	int getN()
+	{ return n; }
+
+	int getR()
+	{ return r; }
+
+	void leer();
+	void mostrar();
+	int factorial(int num);
+	int combinatorio();
+};
+
+void Combinatorio::leer()
+{
+		cout << "Introducir el valor de N: ";
+		cin >> n;
+		setN(n);
+		cout << "Introducir el valor de R: ";
+		cin >> r;
+		setR(r);
+
+}
+
+void Combinatorio::mostrar()
+{
+	cout << "Valor de N: " << getN() << endl;
+	cout << "Valor de R: " << getR() << endl;
+}
+
+int Combinatorio::factorial(int num)
+{
+		if(num < 2)
+			return 1;
+		else
+			return num * factorial(num - 1);
+}
+
+int Combinatorio::combinatorio()
+{
+	int c;
+	c = ((factorial(getN()))/((factorial(getR()))*factorial(getN() - getR())));
+	return c;
+}
+
+
+#include "Combinatorio.h"
+
+using namespace std;
+
+void main()
+{
+	Combinatorio C1,C2,C3;
+	int s;
+	int a, b, c;
+	a = b = c = 0;
+	C1.leer();
+	C2.leer();
+	C3.leer();
+	C1.mostrar();
+	C2.mostrar();
+	C3.mostrar();
+	a = C1.combinatorio();
+	b = C2.combinatorio();
+	c = C3.combinatorio();
+	s = a + b + c;
+	cout << "La suma de los numeros combinatorios es: " << s << endl;
+	getch();
+}
